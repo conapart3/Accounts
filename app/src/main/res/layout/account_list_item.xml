@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/account_item_height"
+    android:weightSum="1"
+    android:background="@color/account_list_item_color">
+
+    <TextView
+        android:id="@+id/accountName"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="TextView"
+        android:layout_weight="0.5"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/accountBalance"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="TextView"
+        android:layout_weight="0.5"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:gravity="center"/>
+
+</LinearLayout>
