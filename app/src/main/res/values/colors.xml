@@ -5,5 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="account_header_color">#3F51B5</color>
     <color name="account_list_item_color">#d2d2d2</color>
-    <color name="account_list_item_divider_color">#8e8e8e</color>
+    <color name="account_list_item_divider_color">#d2d2d2</color>
 </resources>

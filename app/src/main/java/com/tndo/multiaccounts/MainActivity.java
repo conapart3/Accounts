@@ -2,9 +2,8 @@ package com.tndo.multiaccounts;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,8 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,15 +47,23 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Find the account header and list view
-        final AccountHeader accountHeader = (AccountHeader) findViewById(R.id.accountHeader);
-        final ListView listView = (ListView) findViewById(R.id.accountListView);
+        // Inflate the account header view
+//        final AccountHeader accountHeader = (AccountHeader) findViewById(R.id.accountHeader);
+//        final AccountHeader accountHeader = new AccountHeader(getBaseContext());
 
+//        TextView mainAccountNameView = (TextView) accountHeader.findViewById(R.id.mainAccountName);
+//        mainAccountNameView.setText(getMainName());
+//        TextView mainAccountBalanceView = (TextView) accountHeader.findViewById(R.id.mainAccountBalance);
+//        mainAccountBalanceView.setText(getMainBalance());
+
+        // Inflate the account list view
+        final ListView listView = (ListView) findViewById(R.id.accountListView);
         List<Account> accountList = setupDummyListData();
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.account_list_item, accountList);
+        ArrayAdapter adapter = new AccountArrayAdapter(this, R.layout.account_list_item, accountList);
         listView.setAdapter(adapter);
 
     }
+
 
 
     @Override
@@ -115,16 +124,28 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Temp method, sets up a list of dummy data
+     * Placeholder method, sets up a list of dummy data
+     *
      * @return
      */
-    private List<Account> setupDummyListData(){
+    private List<Account> setupDummyListData() {
         final String[] accountNames = new String[]{"Tax", "Car", "Pension", "Holiday", "Savings", "Christmas", "Mortgage", "Kitchen", "Golf Clubs"};
         final double[] accountBalances = new double[]{1234.56, 7500.00, 1250, 30, 500, 100, 500, 750.00, 12.56};
         List<Account> accountList = new ArrayList<>();
-        for(int i=0; i<9; i++){
+        for (int i = 0; i < 9; i++) {
             accountList.add(new Account(accountNames[i], accountBalances[i]));
         }
         return accountList;
+    }
+
+    /**
+     * Placeholder methods for retrieving the name and balance of the main account from the db.
+     * @return
+     */
+    private String getMainBalance() {
+        return "" + 5123.35;
+    }
+    private String getMainName() {
+        return "Danske Bank Current Account";
     }
 }

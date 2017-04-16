@@ -12,16 +12,21 @@ import android.view.View;
 public class AccountHeader extends View {
     public AccountHeader(Context context) {
         super(context);
+        initView();
     }
 
     public AccountHeader(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        initView();
     }
 
     public AccountHeader(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initView();
     }
 
-
+    private void initView() {
+        View view = inflate(getContext(), R.layout.account_header, null);
+    }
 
 }
