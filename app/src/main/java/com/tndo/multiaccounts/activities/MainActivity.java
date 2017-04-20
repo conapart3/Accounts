@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
 {
 
     private DatabaseHelper dbHelper;
+    private ArrayAdapter arrayAdapter;
 
     @Override
     protected void onCreate( Bundle savedInstanceState )
@@ -65,8 +66,8 @@ public class MainActivity extends AppCompatActivity
         // Inflate the account list view
         final ListView listView = (ListView) findViewById(R.id.accountListView);
         List<Subaccount> subaccountList = getSubaccountList(dbHelper, "mainaccount");
-        final ArrayAdapter adapter = new AccountArrayAdapter(this, R.layout.account_list_item, subaccountList);
-        listView.setAdapter(adapter);
+        arrayAdapter = new AccountArrayAdapter(this, R.layout.account_list_item, subaccountList);
+        listView.setAdapter(arrayAdapter);
     }
 
     /**
@@ -188,13 +189,15 @@ public class MainActivity extends AppCompatActivity
         final String name = nameET.getText().toString();
         final String balance = balanceET.getText().toString();
 
-        //todo - figure out why name and balance here are just ""
         dbHelper.addSubAccount(name, ValidatorUtil.validateMonetaryInput(balance), "mainaccount", "ic_food");
+        // todo - refresh the dataset - this does not quite work
+        arrayAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onDialogNegativeClick( DialogFragment dialog )
     {
-
+        // refresh the dataset anyway
+        arrayAdapter.notifyDataSetChanged();
     }
 }
